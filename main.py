@@ -1,26 +1,20 @@
 from openai import OpenAI
 from src import GenerateQA, TextExtractor, OpenAIClient
-
-if __name__ == '__main__':
     
-    input_folder = "cleaned_data"
-    output_folder = "question"
+input_folder = "cleaned_data"
+output_folder = "question"
 
-    # Initialize the client
-    client = OpenAIClient(api_url="http://10.132.3.11:11434/v1", api_key="your_api_key", model_name="llama3.1")
+# Initialize the client
+client = OpenAIClient(api_url="http://10.132.3.11:11434/v1", 
+                        api_key="your_api_key", 
+                        model_name="llama3.1",
+                        )
 
-    # Query the model
-    response = client.query_model(prompt="Hello, how are you?")
-    
-    extractor = TextExtractor(input_folder)
-    texts = extractor.extract_text_from_folder()
-    for text in texts:
-        qa_pairs = GenerateQA(client, text, output_folder)
-        qa_pairs.generate_questions()
-    
-    # validator = QuestionValidator(client, model_name)
-    # question_generator = OpenAIQuestionGenerator(client, model_name, validator, max_retries=10)
+# Query the model
+response = client.query_model(prompt="Hello, how are you?")
 
-    # # Process the files
-    # file_processor = FileProcessor(question_generator)
-    # file_processor.process_files(input_folder, output_folder)
+extractor = TextExtractor(input_folder)
+texts = extractor.extract_text_from_folder()
+for text in texts:
+    qa_pairs = GenerateQA(client, text, output_folder)
+    qa_pairs.generate_questions()
