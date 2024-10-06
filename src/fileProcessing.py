@@ -1,4 +1,7 @@
-class FileProcessor(IFileProcessor):
+import os
+from tqdm import tqdm
+
+class FileProcessor():
     def __init__(self, question_generator):
         self.question_generator = question_generator
 
