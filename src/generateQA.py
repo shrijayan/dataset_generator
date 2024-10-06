@@ -1,5 +1,6 @@
 from .fileProcessing import FileProcessor
 from .cleanHeader import HeaderFooterCleaner
+from .openai import client
 
 class GenerateQA:
     def __init__(self, text):
@@ -36,8 +37,10 @@ class GenerateQA:
                 #             print(f"Validation failed for chunk on attempt {attempts}. Retrying...")
                 #         else:
                 #             print(f"Validation failed for chunk after {self.max_retries} attempts. Moving to next chunk.")
-                FileProcessor.save_questions(all_questions)
+                file_procssing = FileProcessor()
+                file_procssing.save_questions(all_questions)
             return all_questions
+        
         except Exception as e:
             print(f"Error generating questions: {str(e)}")
             return None
@@ -59,7 +62,7 @@ class GenerateQA:
         <question> I have account in some other bank can I enrol ECS from that account? </question>
         <answer> Yes, you can enroll ECS and pay your bill from any other bank account by downloading the ECS forms and sending them to the address mentioned on the form. </answer>'''
         
-        response = self.client.query_model(content, sys_prompt)
+        response = client.query_model(content, sys_prompt)
         
         return response
         # return self.clean_up_questions(response_content)
