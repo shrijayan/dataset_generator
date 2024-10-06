@@ -1,9 +1,8 @@
 from .fileProcessing import FileProcessor
 class GenerateQA:
-    def __init__(self, client, text, output_folder):
+    def __init__(self, client, text):
         self.client = client
         self.text = text
-        self.output_folder = output_folder
 
     def generate_questions(self):
         try:
@@ -36,7 +35,7 @@ class GenerateQA:
                 #             print(f"Validation failed for chunk on attempt {attempts}. Retrying...")
                 #         else:
                 #             print(f"Validation failed for chunk after {self.max_retries} attempts. Moving to next chunk.")
-                FileProcessor.save_questions(all_questions, self.output_folder)
+                FileProcessor.save_questions(all_questions)
             return all_questions
         except Exception as e:
             print(f"Error generating questions: {str(e)}")
