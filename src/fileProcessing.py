@@ -6,8 +6,7 @@ class FileProcessor():
         if not os.path.exists(output_folder):
             os.makedirs(output_folder)
 
-        for i, question in enumerate(questions):
-            output_file_path = os.path.join(output_folder, f"question_{i}.txt")
+        output_file_path = os.path.join(output_folder, f"question.jsonl")
 
-            with open(output_file_path, 'w', encoding='utf-8') as file:
-                file.write(question)
+        with open(output_file_path, 'w', encoding='utf-8') as file:
+            file.write(questions)
