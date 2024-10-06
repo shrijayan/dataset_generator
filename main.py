@@ -1,12 +1,11 @@
 import os
 from dotenv import load_dotenv
-from openai import OpenAI
 from src import GenerateQA, TextExtractor, OpenAIClient
 
 # Load environment variables from .env file
 load_dotenv()
     
-input_folder = "cleaned_data"
+input_folder = "input_data"
 
 # Initialize the client
 client = OpenAIClient(api_url=os.getenv("API_URL"), 
