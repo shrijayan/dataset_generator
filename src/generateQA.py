@@ -1,18 +1,20 @@
 from .cleanHeader import HeaderFooterCleaner
 from .openai import client
 from .tokenCounter import TokenCounter
-import textwrap 
+import textwrap
+import json
 
 class GenerateQA:
     def __init__(self):
         self.tokenCounter = TokenCounter()
-        
         with open('prompts/generateQA-sys_prompt.txt', 'r') as file:
             self.sys_prompt = file.read()
+        with open('config.json', 'r') as config_file:
+            self.config = json.load(config_file)
             
     def generate_questions(self, text):
         try:
-            model_max_tokens = 32000
+            model_max_tokens = self.config.get('model_max_tokens')
             sys_prompt_tokens = self.tokenCounter.get_token_size(self.sys_prompt)
             chunk_size_limit = model_max_tokens - sys_prompt_tokens
             
