@@ -1,5 +1,9 @@
 import os
 from openai import OpenAI
+import json
+
+with open('config.json', 'r') as config_file:
+    config = json.load(config_file)
 
 class OpenAIClient:
     def __init__(self, api_url, api_key, model_name):
@@ -32,5 +36,5 @@ class OpenAIClient:
 # Initialize the client
 client = OpenAIClient(api_url=os.getenv("API_URL"), 
                         api_key=os.getenv("API_KEY"), 
-                        model_name="llama3.1",
+                        model_name=config.get('model_name'),
                         )
