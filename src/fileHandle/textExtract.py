@@ -2,9 +2,9 @@ import os
 
 class TextExtractor:
     def extract_text_from_folder(self, folder_path):
-        extracted_texts = []
+        num_files = len([name for name in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, name))])
         
-        # List all files in the folder
+        extracted_texts = []
         for file_name in os.listdir(folder_path):
             file_path = os.path.join(folder_path, file_name)
             
@@ -17,4 +17,4 @@ class TextExtractor:
             else:
                 print(f"Skipping non-file: {file_path}")
         
-        return extracted_texts
+        return extracted_texts, num_files
