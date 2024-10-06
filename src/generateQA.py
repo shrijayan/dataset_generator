@@ -2,18 +2,15 @@ from .cleanHeader import HeaderFooterCleaner
 from .openai import client
 
 class GenerateQA:
-    def __init__(self, text):
-        self.text = text
-
-    def generate_questions(self):
+    def generate_questions(self, text):
         try:
             model_max_tokens = 32000
             prompt_tokens = 3000
             max_chunk_size = model_max_tokens - prompt_tokens
-            if len(self.text) > max_chunk_size:
-                chunks = [self.text[i:i+max_chunk_size] for i in range(0, len(self.text), max_chunk_size)]
+            if len(text) > max_chunk_size:
+                chunks = [text[i:i+max_chunk_size] for i in range(0, len(text), max_chunk_size)]
             else:
-                chunks = [self.text]
+                chunks = [text]
             
             all_questions = []
 
