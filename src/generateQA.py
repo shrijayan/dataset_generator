@@ -1,4 +1,3 @@
-from .fileProcessing import FileProcessor
 from .cleanHeader import HeaderFooterCleaner
 from .openai import client
 
@@ -37,8 +36,6 @@ class GenerateQA:
                 #             print(f"Validation failed for chunk on attempt {attempts}. Retrying...")
                 #         else:
                 #             print(f"Validation failed for chunk after {self.max_retries} attempts. Moving to next chunk.")
-                file_procssing = FileProcessor()
-                file_procssing.save_questions(all_questions)
             return all_questions
         
         except Exception as e:
@@ -65,4 +62,3 @@ class GenerateQA:
         response = client.query_model(content, sys_prompt)
         
         return response
-        # return self.clean_up_questions(response_content)
