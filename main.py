@@ -12,9 +12,11 @@ if __name__ == '__main__':
     # Query the model
     response = client.query_model(prompt="Hello, how are you?")
     
-    texts = TextExtractor(input_folder)
+    extractor = TextExtractor(input_folder)
+    texts = extractor.extract_text_from_folder()
     for text in texts:
-        qa_pairs = GenerateQA(client, model_name, text)
+        qa_pairs = GenerateQA(client, text, output_folder)
+        qa_pairs.generate_questions()
     
     # validator = QuestionValidator(client, model_name)
     # question_generator = OpenAIQuestionGenerator(client, model_name, validator, max_retries=10)
