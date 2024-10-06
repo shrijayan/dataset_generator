@@ -46,7 +46,9 @@ The configuration for the model is specified in the config.json file. You can up
 
 ## Usage
 
-To run the question generation process, execute the main.py script:
+1. Place your input files in the `input_data` folder.
+
+2. To run the question generation process, execute the main.py script:
 ```
 python main.py
 ```
@@ -57,6 +59,10 @@ This script will:
 3. Generate question-answer pairs from the extracted text.
 4. Clean the generated questions.
 5. Save the cleaned questions to the generated_questions folder.
+
+## Prompts
+
+- The system prompt for generating question-answer pairs is located in the `prompts` folder as `generateQA-sys_prompt.txt`
 
 ## Project Structure
 ```
