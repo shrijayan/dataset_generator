@@ -1,4 +1,5 @@
 import tiktoken
+
 class TokenCounter:
     def get_token_size(self, text, model_name="gpt-4"):
         # Load the tokenizer for the specified model
