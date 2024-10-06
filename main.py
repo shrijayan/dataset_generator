@@ -10,7 +10,7 @@ input_folder = "input_data"
 extractor = TextExtractor()
 texts = extractor.extract_text_from_folder(input_folder)
 
-for text in texts:
+for text, input_file_name in texts:
     qa_pairs = GenerateQA()
     all_questions = qa_pairs.generate_questions(text)
     
@@ -18,4 +18,4 @@ for text in texts:
     cleaned_text = cleaner.remove_unwanted_lines(all_questions)
     
     file_procssing = FileProcessor()
-    file_procssing.save_questions(cleaned_text)
+    file_procssing.save_questions(cleaned_text, input_file_name)
