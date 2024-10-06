@@ -25,7 +25,7 @@ class FileProcessor():
                 with open(output_file_path, 'w', encoding='utf-8') as file:
                     file.write('\n\n'.join(questions))
     
-    def save_questions(questions, output_folder):
+    def save_questions(questions, output_folder="generated_questions"):
         if not os.path.exists(output_folder):
             os.makedirs(output_folder)
 
