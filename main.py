@@ -10,7 +10,7 @@ extractor = TextExtractor()
 texts = extractor.extract_text_from_folder(input_folder)
 
 for text in texts:
-    qa_pairs = GenerateQA(text)
-    all_questions = qa_pairs.generate_questions()
+    qa_pairs = GenerateQA()
+    all_questions = qa_pairs.generate_questions(text)
     file_procssing = FileProcessor()
     file_procssing.save_questions(all_questions)
