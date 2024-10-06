@@ -65,8 +65,6 @@ This script will:
 .env.example
 .gitignore
 config.json
-input_data/
-    file.txt
 main.py
 README.md
 requirements.txt
@@ -79,9 +77,10 @@ src/
     openai.py
     questionValidator.py
     textExtract.py
+input_data/
+    content.txt
 generated_questions/
-    file.jsonl
-    file.txt.jsonl
+    generated_questions.jsonl
 ```
 
 ## Contributing
