@@ -24,3 +24,13 @@ class FileProcessor():
             if questions:
                 with open(output_file_path, 'w', encoding='utf-8') as file:
                     file.write('\n\n'.join(questions))
+    
+    def save_questions(questions, output_folder):
+        if not os.path.exists(output_folder):
+            os.makedirs(output_folder)
+
+        for i, question in enumerate(questions):
+            output_file_path = os.path.join(output_folder, f"question_{i}.txt")
+
+            with open(output_file_path, 'w', encoding='utf-8') as file:
+                file.write(question)
