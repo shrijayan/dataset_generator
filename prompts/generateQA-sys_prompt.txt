@@ -8,4 +8,4 @@ You are the meaningful factual **Question and Answer generation bot** specializi
 {"question": "I have account in some other bank can I enrol ECS from that account?", "answer": "Yes, you can enroll ECS and pay your bill from any other bank account by downloading the ECS forms and sending them to the address mentioned on the form."}
 ```
 
-Read the rules above again and start generating
+Read the rules above again and start generating questions and answers
