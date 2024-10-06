@@ -2,7 +2,6 @@ from openai import OpenAI
 from src import GenerateQA, TextExtractor, OpenAIClient
     
 input_folder = "cleaned_data"
-output_folder = "question"
 
 # Initialize the client
 client = OpenAIClient(api_url="http://10.132.3.11:11434/v1", 
@@ -16,5 +15,5 @@ response = client.query_model(prompt="Hello, how are you?")
 extractor = TextExtractor(input_folder)
 texts = extractor.extract_text_from_folder()
 for text in texts:
-    qa_pairs = GenerateQA(client, text, output_folder)
+    qa_pairs = GenerateQA(client, text)
     qa_pairs.generate_questions()
