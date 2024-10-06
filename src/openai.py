@@ -2,15 +2,16 @@
 from openai import OpenAI
 
 class OpenAIClient:
-    def __init__(self, api_url, api_key):
+    def __init__(self, api_url, api_key, model_name):
         self.api_url = api_url
         self.api_key = api_key
+        self.model_name = model_name
         self.client = OpenAI(
             base_url=self.api_url,
             api_key=self.api_key  # Some servers might not require this, like Ollama
         )
 
-    def query_model(self, prompt, model_name, system_message=None):
+    def query_model(self, prompt, system_message=None):
         # Prepare the chat messages
         messages = [
             {"role": "user", "content": prompt}
@@ -21,7 +22,7 @@ class OpenAIClient:
 
         # Call the model and generate a response
         response = self.client.chat.completions.create(
-            model=model_name,
+            model=self.model_name,
             messages=messages
         )
         
