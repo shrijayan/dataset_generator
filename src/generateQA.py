@@ -1,8 +1,9 @@
+from .fileProcessing import FileProcessor
 class GenerateQA:
-    def __init__(self, client, model_name, text):
+    def __init__(self, client, text, output_folder):
         self.client = client
-        self.model_name = model_name
         self.text = text
+        self.output_folder = output_folder
 
     def generate_questions(self):
         try:
@@ -17,29 +18,31 @@ class GenerateQA:
             all_questions = []
 
             for chunk in chunks:
-                validated = False
-                attempts = 0
+            #     validated = False
+            #     attempts = 0
+                chuck_qa = self.generate_chunk_questions(chunk)
+                all_questions.append(chuck_qa)
 
-                while not validated and attempts < self.max_retries:
-                    attempts += 1
-                    clean_content = self.generate_chunk_questions(chunk)
+                # while not validated and attempts < self.max_retries:
+                #     attempts += 1
+                #     clean_content = self.generate_chunk_questions(chunk)
                     
-                    if self.validator.validate_questions(f"Original content:\n{clean_content}\n\nPlease respond with either 'YES' or 'NO'."):
-                        print(f"Validation successful for chunk on attempt {attempts}")
-                        all_questions.append(clean_content)
-                        validated = True
-                    else:
-                        if attempts < self.max_retries:
-                            print(f"Validation failed for chunk on attempt {attempts}. Retrying...")
-                        else:
-                            print(f"Validation failed for chunk after {self.max_retries} attempts. Moving to next chunk.")
-            
+                #     if self.validator.validate_questions(f"Original content:\n{clean_content}\n\nPlease respond with either 'YES' or 'NO'."):
+                #         print(f"Validation successful for chunk on attempt {attempts}")
+                #         all_questions.append(clean_content)
+                #         validated = True
+                #     else:
+                #         if attempts < self.max_retries:
+                #             print(f"Validation failed for chunk on attempt {attempts}. Retrying...")
+                #         else:
+                #             print(f"Validation failed for chunk after {self.max_retries} attempts. Moving to next chunk.")
+                FileProcessor.save_questions(all_questions, self.output_folder)
             return all_questions
         except Exception as e:
             print(f"Error generating questions: {str(e)}")
             return None
     
-    def generate_chunk_questions(self):
+    def generate_chunk_questions(self, content):
         sys_prompt = '''You are the meaningful factual Question and Answer generation bot specializing in the banking domain. Generate the question in customer point of view, which will be answered by the customer care agent. Your objective is to generate detailed questions based on provided content, incorporating specific product details. For instance, generate a question such as:
 
         <question>  What is the Savings Bank interest? </question>
@@ -56,6 +59,7 @@ class GenerateQA:
         <question> I have account in some other bank can I enrol ECS from that account? </question>
         <answer> Yes, you can enroll ECS and pay your bill from any other bank account by downloading the ECS forms and sending them to the address mentioned on the form. </answer>'''
         
-        response_content = vllm(self.client, self.model_name, sys_prompt, self.chunk)
+        response = self.client.query_model(content, sys_prompt)
         
-        return self.clean_up_questions(response_content)
+        return response
+        # return self.clean_up_questions(response_content)
