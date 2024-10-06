@@ -2,8 +2,7 @@ from .fileProcessing import FileProcessor
 from .cleanHeader import HeaderFooterCleaner
 
 class GenerateQA:
-    def __init__(self, client, text):
-        self.client = client
+    def __init__(self, text):
         self.text = text
 
     def generate_questions(self):
