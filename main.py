@@ -1,11 +1,16 @@
+import os
+from dotenv import load_dotenv
 from openai import OpenAI
 from src import GenerateQA, TextExtractor, OpenAIClient
+
+# Load environment variables from .env file
+load_dotenv()
     
 input_folder = "cleaned_data"
 
 # Initialize the client
-client = OpenAIClient(api_url="http://10.132.3.11:11434/v1", 
-                        api_key="your_api_key", 
+client = OpenAIClient(api_url=os.getenv("API_URL"), 
+                        api_key=os.getenv("API_KEY"), 
                         model_name="llama3.1",
                         )
 
