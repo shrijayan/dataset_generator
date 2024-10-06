@@ -2,3 +2,4 @@ vllm
 ollama
 tqdm
 openai
+python-dotenv
