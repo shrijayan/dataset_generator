@@ -1,4 +1,6 @@
 from .fileProcessing import FileProcessor
+from .cleanHeader import HeaderFooterCleaner
+
 class GenerateQA:
     def __init__(self, client, text):
         self.client = client
