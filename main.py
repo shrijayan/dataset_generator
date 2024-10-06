@@ -1,4 +1,3 @@
-import os
 from dotenv import load_dotenv
 from src import GenerateQA, TextExtractor, OpenAIClient
 
@@ -6,7 +5,8 @@ from src import GenerateQA, TextExtractor, OpenAIClient
 load_dotenv()
     
 input_folder = "input_data"
-texts = TextExtractor.extract_text_from_folder(input_folder)
+extractor = TextExtractor()
+texts = extractor.extract_text_from_folder(input_folder)
 
 for text in texts:
     qa_pairs = GenerateQA(text)
