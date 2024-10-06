@@ -13,26 +13,10 @@ class GenerateQA:
                 chunks = [text]
             
             all_questions = []
-
             for chunk in chunks:
-            #     validated = False
-            #     attempts = 0
                 chuck_qa = self.generate_chunk_questions(chunk)
                 all_questions.append(chuck_qa)
-
-                # while not validated and attempts < self.max_retries:
-                #     attempts += 1
-                #     clean_content = self.generate_chunk_questions(chunk)
-                    
-                #     if self.validator.validate_questions(f"Original content:\n{clean_content}\n\nPlease respond with either 'YES' or 'NO'."):
-                #         print(f"Validation successful for chunk on attempt {attempts}")
-                #         all_questions.append(clean_content)
-                #         validated = True
-                #     else:
-                #         if attempts < self.max_retries:
-                #             print(f"Validation failed for chunk on attempt {attempts}. Retrying...")
-                #         else:
-                #             print(f"Validation failed for chunk after {self.max_retries} attempts. Moving to next chunk.")
+                
             return '\n'.join(all_questions)
         
         except Exception as e:
