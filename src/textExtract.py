@@ -12,7 +12,8 @@ class TextExtractor:
             if os.path.isfile(file_path):
                 with open(file_path, 'r') as file:
                     content = file.read()
-                    extracted_texts.append(content)
+                    file_name_without_extension = os.path.splitext(file_name)[0]
+                    extracted_texts.append((content, file_name_without_extension))
             else:
                 print(f"Skipping non-file: {file_path}")
         
