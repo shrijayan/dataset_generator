@@ -2,7 +2,7 @@ import os
 from tqdm import tqdm
 
 class FileProcessor():
-    def save_questions(questions, output_folder="generated_questions"):
+    def save_questions(self, questions, output_folder="generated_questions"):
         if not os.path.exists(output_folder):
             os.makedirs(output_folder)
 
