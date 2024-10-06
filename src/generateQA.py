@@ -1,4 +1,3 @@
-from .fileHandle.cleanHeader import HeaderFooterCleaner
 from .openai import client
 from .tokenCounter import TokenCounter
 import textwrap
