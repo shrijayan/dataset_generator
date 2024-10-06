@@ -1,10 +1,7 @@
 import os
 
 class TextExtractor:
-    def __init__(self, folder_path):
-        self.folder_path = folder_path
-        
-    def extract_text_from_folder(self):
+    def extract_text_from_folder(self, folder_path):
         extracted_texts = []
         
         # List all files in the folder
