@@ -11,7 +11,7 @@ class TokenCounter:
         return len(tokens)
 
 if __name__ == "__main__":
-    text = "This is an example text to calculate the token size using GPT-4."
+    text = "This is an example text to calculate the token size."
     tokenCounter = TokenCounter()
     token_size = tokenCounter.get_token_size(text)
     print(f"Token size: {token_size}")
