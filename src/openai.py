@@ -1,4 +1,4 @@
-# openai.py
+import os
 from openai import OpenAI
 
 class OpenAIClient:
