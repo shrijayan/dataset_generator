@@ -28,3 +28,9 @@ class OpenAIClient:
         
         # Return the result
         return response.choices[0].message.content
+
+# Initialize the client
+client = OpenAIClient(api_url=os.getenv("API_URL"), 
+                        api_key=os.getenv("API_KEY"), 
+                        model_name="llama3.1",
+                        )
