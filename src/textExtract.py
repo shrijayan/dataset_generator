@@ -5,8 +5,8 @@ class TextExtractor:
         extracted_texts = []
         
         # List all files in the folder
-        for file_name in os.listdir(self.folder_path):
-            file_path = os.path.join(self.folder_path, file_name)
+        for file_name in os.listdir(folder_path):
+            file_path = os.path.join(folder_path, file_name)
             
             # Check if it's a file
             if os.path.isfile(file_path):
