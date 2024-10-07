@@ -2,6 +2,7 @@
 .env
 input_data/
 generated_questions/
+venv-qg/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
