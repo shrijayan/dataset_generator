@@ -3,7 +3,7 @@ import csv
 import json
 import xml.etree.ElementTree as ET
 from PyPDF2 import PdfReader
-# from pptx import Presentation
+from pptx import Presentation
 
 class TextExtractor():
     def extract_text_from_file(self, file_path):
@@ -37,14 +37,14 @@ class TextExtractor():
                     cleaned_text = ' '.join(page_text.splitlines())  # Replace line breaks with spaces
                     text.append(cleaned_text)
                 return ' '.join(text)
-            # elif ext in ['.ppt', '.pptx']:
-            #     text = []
-            #     prs = Presentation(file_path)
-            #     for slide in prs.slides:
-            #         for shape in slide.shapes:
-            #             if hasattr(shape, 'text'):
-            #                 text.append(shape.text)
-            #     return ' '.join(text)
+            elif ext in ['.ppt', '.pptx']:
+                text = []
+                prs = Presentation(file_path)
+                for slide in prs.slides:
+                    for shape in slide.shapes:
+                        if hasattr(shape, 'text'):
+                            text.append(shape.text)
+                return ' '.join(text)
             else:
                 return f"Unsupported file type: {ext}"
         except Exception as e:
@@ -75,6 +75,7 @@ class TextExtractor():
                     print(f"Error processing {filename}: {str(e)}")
             else:
                 print(f"Skipped: {filename} (already a .txt file)")
+                pass
 
 if __name__ == "__main__":
     folder_path = input("Enter the folder path: ")
