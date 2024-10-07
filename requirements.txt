@@ -1,3 +1,5 @@
 tqdm
 openai
 python-dotenv
+tiktoken
+PyPDF2
