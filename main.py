@@ -2,7 +2,7 @@ import json
 import multiprocessing
 from tqdm import tqdm
 from dotenv import load_dotenv
-from src import GenerateQA, TextExtractor, FileProcessor, HeaderFooterCleaner
+from src import GenerateQA, TextExtractor, FileProcessor, HeaderFooterCleaner, FolderTextReader
 
 # Load environment variables from .env file
 load_dotenv()
@@ -21,8 +21,11 @@ def process_file(text_and_filename):
 if __name__ == "__main__":
     with open('config.json', 'r') as config_file:
         config = json.load(config_file)
-        
-    extractor = TextExtractor()
+    
+    text_extractor = TextExtractor()
+    text_extractor.process_folder(config.get('input_folder'))
+    
+    extractor = FolderTextReader()
     texts, num_files = extractor.extract_text_from_folder(config.get('input_folder'))
 
     # Create a pool of worker processes
