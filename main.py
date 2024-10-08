@@ -3,9 +3,13 @@ import multiprocessing
 from tqdm import tqdm
 from dotenv import load_dotenv
 from src import GenerateQA, TextExtractor, FileProcessor, HeaderFooterCleaner, FolderTextReader
+from src.fileHandle import duplicateCheck
 
 # Load environment variables from .env file
 load_dotenv()
+
+with open('config.json', 'r') as config_file:
+    config = json.load(config_file)
 
 def process_file(text_and_filename):
     text, input_file_name = text_and_filename
@@ -17,17 +21,17 @@ def process_file(text_and_filename):
     
     file_processing = FileProcessor()
     file_processing.save_questions(cleaned_text, input_file_name)
+    
+    duplicateremover = duplicateCheck()
+    duplicateremover.process_jsonl_files(config.get('output_folder'))
 
 if __name__ == "__main__":
-    with open('config.json', 'r') as config_file:
-        config = json.load(config_file)
-    
     text_extractor = TextExtractor()
     text_extractor.process_folder(config.get('input_folder'))
     
     extractor = FolderTextReader()
     texts, num_files = extractor.extract_text_from_folder(config.get('input_folder'))
-
+    
     # Create a pool of worker processes
     num_processes = multiprocessing.cpu_count()
     pool = multiprocessing.Pool(processes=num_processes)
