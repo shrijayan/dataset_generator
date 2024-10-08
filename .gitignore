@@ -3,6 +3,7 @@
 input_data/
 generated_questions/
 venv-qg/*
+chromadb/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
