@@ -1,5 +1,4 @@
 import os
-from tqdm import tqdm
 
 class FileProcessor():
     def save_questions(self, questions, input_file_name, output_folder="generated_questions"):
