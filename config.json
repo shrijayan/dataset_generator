@@ -1,5 +1,9 @@
 {
     "model_name": "meta-llama/Llama-3.1-8B-Instruct",
     "model_max_tokens": 32000,
-    "input_folder": "input_data"
+    "input_folder": "input_data",
+    "output_folder": "generated_questions",
+    "chroma_db_path": "chromadb",
+    "chroma_collection_name": "questions",
+    "duplicate_threshold": 0.1
 }
