@@ -5,3 +5,4 @@ tiktoken
 PyPDF2
 python-pptx
 chromadb
+beautifulsoup4
