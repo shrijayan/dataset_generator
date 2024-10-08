@@ -14,13 +14,6 @@ class TextExtractor():
             if ext == '.txt':
                 with open(file_path, 'r', encoding='utf-8') as f:
                     return f.read()
-            elif ext == '.csv':
-                text = []
-                with open(file_path, 'r', newline='', encoding='utf-8') as f:
-                    csv_reader = csv.reader(f)
-                    for row in csv_reader:
-                        text.append(','.join(row))
-                return ' '.join(text)
             elif ext == '.json':
                 with open(file_path, 'r', encoding='utf-8') as f:
                     data = json.load(f)
