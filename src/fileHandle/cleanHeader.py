@@ -5,8 +5,13 @@ class HeaderFooterCleaner:
 
     def remove_unwanted_lines(self, text):
         lines = text.split('\n')
-        if any(lines[0].startswith(word) for word in self.first_line_remove_words):
-            lines = lines[1:]
-        if any(lines[-1].startswith(word) for word in self.last_line_remove_words):
-            lines = lines[:-1]
+        
+        # Remove lines from the top until it sees '{'
+        while lines and '{' not in lines[0]:
+            lines.pop(0)
+        
+        # Remove lines from the bottom until it sees '}'
+        while lines and '}' not in lines[-1]:
+            lines.pop()
+        
         return '\n'.join(lines)
