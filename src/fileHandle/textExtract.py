@@ -4,6 +4,8 @@ import json
 import xml.etree.ElementTree as ET
 from PyPDF2 import PdfReader
 from pptx import Presentation
+from html.parser import HTMLParser
+from bs4 import BeautifulSoup
 
 class TextExtractor():
     def extract_text_from_file(self, file_path):
@@ -38,6 +40,10 @@ class TextExtractor():
                         if hasattr(shape, 'text'):
                             text.append(shape.text)
                 return ' '.join(text)
+            elif ext == '.html':
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    soup = BeautifulSoup(f, 'html.parser')
+                return soup.get_text()
             else:
                 return f"Unsupported file type: {ext}"
         except Exception as e:
