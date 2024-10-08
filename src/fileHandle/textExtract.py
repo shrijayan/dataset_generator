@@ -81,38 +81,3 @@ if __name__ == "__main__":
     folder_path = input("Enter the folder path: ")
     text_extractor = TextExtractor()
     text_extractor.process_folder(folder_path)
-
-# import os
-# import textract
-
-# class TextExtractor:
-#     def process_folder(folder_path):
-#         for filename in os.listdir(folder_path):
-#             file_path = os.path.join(folder_path, filename)
-            
-#             # Skip directories
-#             if os.path.isdir(file_path):
-#                 continue
-            
-#             # Process non-txt files
-#             if not filename.lower().endswith('.txt'):
-#                 try:
-#                     # Extract text from the file
-#                     text = textract.process(file_path).decode('utf-8')
-                    
-#                     # Create a new txt file with the extracted text
-#                     new_filename = os.path.splitext(filename)[0] + '.txt'
-#                     new_file_path = os.path.join(folder_path, new_filename)
-                    
-#                     with open(new_file_path, 'w', encoding='utf-8') as f:
-#                         f.write(text)
-                    
-#                     print(f"Processed: {filename} -> {new_filename}")
-#                 except Exception as e:
-#                     print(f"Error processing {filename}: {str(e)}")
-#             else:
-#                 print(f"Skipped: {filename} (already a .txt file)")
-
-# if __name__ == "__main__":
-#     folder_path = input("Enter the folder path: ")
-#     process_folder(folder_path)
