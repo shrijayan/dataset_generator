@@ -2,7 +2,7 @@
 .env
 input_data/
 generated_questions/
-venv-qg/*
+.venv-qg/*
 chromadb/*
 
 # Byte-compiled / optimized / DLL files
