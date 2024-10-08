@@ -17,8 +17,6 @@ class duplicateCheck:
     def check_duplicate(self, question):
         similarity = self.collection.query(query_texts=[question], n_results=1)
         if similarity['documents'][0]:
-            print(similarity['distances'][0][0])
-            print(config.get('duplicate_threshold'))
             if similarity['distances'][0][0] > config.get('duplicate_threshold'):
                 return True
             else:
