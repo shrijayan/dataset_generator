@@ -21,9 +21,6 @@ def process_file(text_and_filename):
     
     file_processing = FileProcessor()
     file_processing.save_questions(cleaned_text, input_file_name)
-    
-    duplicateremover = duplicateCheck()
-    duplicateremover.process_jsonl_files(config.get('output_folder'))
 
 if __name__ == "__main__":
     text_extractor = TextExtractor()
@@ -44,3 +41,6 @@ if __name__ == "__main__":
     # Close the pool of worker processes
     pool.close()
     pool.join()
+
+    duplicateremover = duplicateCheck()
+    duplicateremover.process_jsonl_files(config.get('output_folder'))
