@@ -65,43 +65,9 @@ The configuration for the model is specified in the config.json file. You can up
 python main.py
 ```
 
-This script will:
-1. Load environment variables.
-2. Extract text from files in the input_data folder.
-3. Generate question-answer pairs from the extracted text.
-4. Clean the generated questions.
-5. Save the cleaned questions to the generated_questions folder.
-
 ## Prompts
 
 - The system prompt for generating question-answer pairs is located in the `prompts` folder as `generateQA-sys_prompt.txt`
-
-## Project Structure
-```plaintext
-prompt/
-    generateQA-sys_prompt.txt
-src/
-    __init__.py
-    fileHandler/
-        __init__.py
-        cleanHeader.py
-        fileProcessing.py
-        textExtract.py
-    generateQA.py
-    openai.py
-    questionValidator.py
-input_data/
-    content.txt
-generated_questions/
-    generated_questions.jsonl
-.env
-.env.example
-.gitignore
-config.json
-main.py
-README.md
-requirements.txt
-```
 
 ## Contributing
 Contributions are welcome! Please open an issue or submit a pull request for any changes.
