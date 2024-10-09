@@ -1,5 +1,5 @@
-# Question Generation for Fine-Tuning
-This repository contains a system for generating question-answer pairs for `FINE-TUNING LLMs` from text data. The system leverages various modules to extract text, clean headers and footers, generate questions using a language model, and save the generated questions.
+# Dataset Generator for Fine-Tuning
+This repository contains a system for generating question-answer pairs for `FINE-TUNING LLMs` from the data you have. The system leverages various modules to extract text, generate questions using a language model, and save the generated questions.
 
 ## Latest Update
 - Added a feature to prcoess HTML as input files.
