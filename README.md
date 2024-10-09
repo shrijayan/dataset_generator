@@ -15,6 +15,11 @@ This repository contains a system for generating question-answer pairs for `FINE
 - [Contributing](#contributing)
 - [License](#license)
 
+## Supported Inference Engine
+1. VLLM
+2. OpenAI API
+
+
 
 ## Installation
 1. Clone the repository:
