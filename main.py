@@ -29,18 +29,23 @@ if __name__ == "__main__":
     extractor = FolderTextReader()
     texts, num_files = extractor.extract_text_from_folder(config.get('input_folder'))
     
-    # Create a pool of worker processes
-    num_processes = multiprocessing.cpu_count()
-    pool = multiprocessing.Pool(processes=num_processes)
+    if config.get('inference_engine').lower() == 'vllm':
+        # Create a pool of worker processes
+        num_processes = multiprocessing.cpu_count()
+        pool = multiprocessing.Pool(processes=num_processes)
 
-    # Use tqdm to create a progress bar
-    with tqdm(total=num_files, desc="Processed files") as pbar:
-        for _ in pool.imap_unordered(process_file, texts):
-            pbar.update()
+        # Use tqdm to create a progress bar
+        with tqdm(total=num_files, desc="Processed files") as pbar:
+            for _ in pool.imap_unordered(process_file, texts):
+                pbar.update()
 
-    # Close the pool of worker processes
-    pool.close()
-    pool.join()
+        # Close the pool of worker processes
+        pool.close()
+        pool.join()
+    
+    else:
+        for text in texts:
+            process_file(text)
 
     duplicateremover = duplicateCheck()
     duplicateremover.process_jsonl_files(config.get('output_folder'))
