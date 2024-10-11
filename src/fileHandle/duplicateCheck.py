@@ -36,8 +36,8 @@ class duplicateCheck:
                 file_path = os.path.join(folder_path, filename)
                 with open(file_path, 'r+') as file:
                     lines = [line.strip() for line in file if line.strip()]
-                    non_duplicate_lines = []
                     
+                    non_duplicate_lines = []
                     for line in lines:
                         json_data = json.loads(line)
                         question = json_data['question']
