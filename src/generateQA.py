@@ -1,4 +1,4 @@
-from .openai import client
+from .llm import client
 from .tokenCounter import TokenCounter
 import textwrap
 import json
