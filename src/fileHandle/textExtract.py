@@ -1,10 +1,8 @@
 import os
-import csv
 import json
 import xml.etree.ElementTree as ET
 from PyPDF2 import PdfReader
 from pptx import Presentation
-from html.parser import HTMLParser
 from bs4 import BeautifulSoup
 
 class TextExtractor():
