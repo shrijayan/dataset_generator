@@ -18,8 +18,8 @@ This repository contains a system for generating question-answer pairs for `FINE
 ## Supported Inference Engine
 1. VLLM
 2. OpenAI API
-
-
+3. Azure OpenAI API
+4. Ollama
 
 ## Installation
 1. Clone the repository:
