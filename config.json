@@ -1,6 +1,7 @@
-{
-    "model_name": "meta-llama/Llama-3.1-8B-Instruct",
-    "model_max_tokens": 32000,
+{   
+    "inference_engine": "azure",
+    "model_name": "llama3.1",
+    "model_max_tokens": 10000,
     "input_folder": "input_data",
     "output_folder": "generated_questions",
     "chroma_db_path": "chromadb",
