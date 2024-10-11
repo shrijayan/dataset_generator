@@ -1,3 +1,3 @@
 from .generateQA import GenerateQA
-from .openai import OpenAIClient
+from .llm import OpenAIClient
 from .fileHandle import FileProcessor, HeaderFooterCleaner, FolderTextReader, TextExtractor, duplicateCheck
