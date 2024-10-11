@@ -10,6 +10,10 @@ class GenerateQA:
             self.sys_prompt = file.read()
         with open('config.json', 'r') as config_file:
             self.config = json.load(config_file)
+    
+    def generate_chunk_questions(self, content):
+        response = client.query_model(content, self.sys_prompt)
+        return response
             
     def generate_questions(self, text):
         try:
@@ -25,7 +29,3 @@ class GenerateQA:
         except Exception as e:
             print(f"Error generating questions: {str(e)}")
             return None
-    
-    def generate_chunk_questions(self, content):
-        response = client.query_model(content, self.sys_prompt)
-        return response
