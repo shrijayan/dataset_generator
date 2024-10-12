@@ -1,7 +1,7 @@
 import os
 
 class FileProcessor():
-    def save_questions(self, questions, input_file_name, output_folder="generated_questions"):
+    def save_file(self, questions, input_file_name, output_folder="generated_questions"):
         if not os.path.exists(output_folder):
             os.makedirs(output_folder)
 
