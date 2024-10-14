@@ -20,14 +20,15 @@ def process_file(text_and_filename):
     cleaned_text = cleaner.remove_unwanted_lines(all_questions)
     
     file_processing = FileProcessor()
-    file_processing.save_file(cleaned_text, input_file_name)
+    file_processing.save_questions(cleaned_text, input_file_name)
 
 if __name__ == "__main__":
     text_extractor = TextExtractor()
-    text_extractor.process_folder(config.get('input_folder'))
+    input_folder = config.get('input_folder')
+    text_extractor.process_folder(input_folder)
     
     extractor = FolderTextReader()
-    texts, num_files = extractor.extract_text_from_folder(config.get('input_folder'))
+    texts, num_files = extractor.extract_text_from_folder(input_folder)
     
     if config.get('inference_engine').lower() == 'vllm':
         # Create a pool of worker processes
