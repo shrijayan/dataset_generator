@@ -78,4 +78,4 @@ python main.py
 Contributions are welcome! Please open an issue or submit a pull request for any changes.
 
 ## License
-This project is licensed under the **GNU AFFERO GENERAL PUBLIC LICENSE**. See the LICENSE file for details.
+This project is licensed under the **Apache-2.0 license**. See the LICENSE file for details.
