@@ -7,7 +7,7 @@ This repository contains a system for generating question-answer pairs for `FINE
 - Simplified the JSONL ouput format cleaning process.
 
 ## Architecture Diagram
-![Architecture diagram](image.png)
+![Architecture diagram](asserts/image.png)
 
 ## Table of Contents
 
