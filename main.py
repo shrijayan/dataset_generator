@@ -2,8 +2,8 @@ import json
 import multiprocessing
 from tqdm import tqdm
 from dotenv import load_dotenv
-from src import GenerateQA, TextExtractor, FileProcessor, HeaderFooterCleaner, FolderTextReader
-from src.fileHandle import duplicateCheck
+from src import GenerateQA
+from src.utils import duplicateCheck, JSONLCleaner, TextExtractor, FileProcessor, FolderTextReader
 
 # Load environment variables from .env file
 load_dotenv()
@@ -16,18 +16,19 @@ def process_file(text_and_filename):
     qa_pairs = GenerateQA()
     all_questions = qa_pairs.generate_questions(text)
     
-    cleaner = HeaderFooterCleaner()
-    cleaned_text = cleaner.remove_unwanted_lines(all_questions)
+    cleaner = JSONLCleaner()
+    cleaned_text = cleaner.clean_jsonl(all_questions)
     
     file_processing = FileProcessor()
     file_processing.save_file(cleaned_text, input_file_name)
 
 if __name__ == "__main__":
     text_extractor = TextExtractor()
-    text_extractor.process_folder(config.get('input_folder'))
+    input_folder = config.get('input_folder')
+    text_extractor.process_folder(input_folder)
     
     extractor = FolderTextReader()
-    texts, num_files = extractor.extract_text_from_folder(config.get('input_folder'))
+    texts, num_files = extractor.extract_text_from_folder(input_folder)
     
     if config.get('inference_engine').lower() == 'vllm':
         # Create a pool of worker processes
