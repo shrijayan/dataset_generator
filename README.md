@@ -50,14 +50,14 @@ cp .env.example .env
 The configuration for the model is specified in the config.json file. You can update the model name or other parameters as needed:
 ```json
 {   
-    "inference_engine": "azure", # Enter your inference engine here
-    "model_name": "llama3.1", # Enter your model name here
-    "model_max_tokens": 10000, # Enter your model's max tokens here
-    "input_folder": "input_data",
-    "output_folder": "generated_questions",
-    "chroma_db_path": "chromadb",
-    "chroma_collection_name": "questions",
-    "duplicate_threshold": 0.1
+    "inference_engine": "azure", # inference engine name here
+    "model_name": "llama3.1", # model name here
+    "model_max_tokens": 10000, # model's max tokens here
+    "input_folder": "input_data", # input data location
+    "output_folder": "generated_questions", # output data location
+    "chroma_db_path": "chromadb", # vector db location
+    "chroma_collection_name": "questions", # vectordb collection name
+    "duplicate_threshold": 0.1 # duplicate checking threshold
 }
 ```
 
