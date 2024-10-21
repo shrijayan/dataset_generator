@@ -1,5 +1,5 @@
 {   
-    "inference_engine": "ollama",
+    "inference_engine": "azure",
     "model_name": "llama3.1",
     "model_max_tokens": 10000,
     "input_folder": "input_data",
