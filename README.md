@@ -6,6 +6,9 @@ This repository contains a system for generating question-answer pairs for `FINE
 - Added a feature to remove duplicate and similar questions.
 - Simplified the JSONL ouput format cleaning process.
 
+## Architecture Diagram
+![Architecture diagram](image.png)
+
 ## Table of Contents
 
 - [Installation](#installation)
