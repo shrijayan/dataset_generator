@@ -4,8 +4,20 @@ import xml.etree.ElementTree as ET
 from PyPDF2 import PdfReader
 from pptx import Presentation
 from bs4 import BeautifulSoup
+import shutil
+
+with open('config.json', 'r') as config_file:
+    config = json.load(config_file)
 
 class TextExtractor():
+    def __init__(self):
+        folder_path = f"{config.get('chroma_db_path')}"
+        if os.path.exists(folder_path):
+            shutil.rmtree(folder_path)
+            print(f"Folder '{folder_path}' has been deleted successfully.")
+        else:
+            print(f"Folder '{folder_path}' does not exist.")
+        
     def extract_text_from_file(self, file_path):
         _, ext = os.path.splitext(file_path)
         ext = ext.lower()
