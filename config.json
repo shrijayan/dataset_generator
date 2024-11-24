@@ -1,7 +1,7 @@
 {   
-    "inference_engine": "azure",
+    "inference_engine": "ollama",
     "model_name": "llama3.1",
-    "model_max_tokens": 10000,
+    "model_max_tokens": 8096,
     "input_folder": "input_data",
     "output_folder": "generated_questions",
     "chroma_db_path": "chromadb",
