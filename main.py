@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 from src import GenerateQA
 from src.utils import duplicateCheck, JSONLCleaner, TextExtractor, FileProcessor, FolderTextReader
 
-# Load environment variables from .env file
 load_dotenv()
 
 with open('config.json', 'r') as config_file:
