@@ -1,6 +1,8 @@
+import json
+
 class JSONLCleaner:
     def clean_entry(self, text):
-        """Clean a single JSONL entry by finding valid JSON structure"""
+        """Clean a single JSONL entry by finding valid JSON structure and ensuring it has 'question' and 'answer' keys"""
         brace_count = 0
         start_idx = -1
         end_idx = -1
@@ -17,7 +19,13 @@ class JSONLCleaner:
                     break
         
         if start_idx != -1 and end_idx != -1:
-            return text[start_idx:end_idx]
+            json_str = text[start_idx:end_idx]
+            try:
+                json_obj = json.loads(json_str)
+                if 'question' in json_obj and 'answer' in json_obj:
+                    return json_str
+            except json.JSONDecodeError:
+                return None
         return None
 
     def clean_jsonl(self, text):
